@@ -22,7 +22,6 @@ function Results() {
 
   // const {all_pokemon} = require('./pokedex');
   // var yourPokemon = all_pokemon[pokemon_id-1];
-  let flavor_array = [];
 
   useEffect(() => {
     const loadPokemon = async () => {
@@ -33,7 +32,9 @@ function Results() {
       response.data.name = capitalizeFirstLetter(response.data.name)
       initPokemon(response.data)
 
-      flavor_array = response.data.flavor_text_entries.filter(item => item.language.name === 'en');
+      response.data.genus = response.data.genera.find(element => element.language.name === 'en').genus
+
+      let flavor_array = response.data.flavor_text_entries.filter(item => item.language.name === 'en');
       const unique = flavor_array.filter(
         (obj, index) =>
         flavor_array.findIndex((item) => item.flavor_text === obj.flavor_text) === index
@@ -59,7 +60,7 @@ function Results() {
   }
 
   if (loading) {
-    return <h1></h1>
+    return <h1>Loading... Please wait...</h1>
   }
 
   //let array = yourPokemon.flavor_text_entries === undefined ? [] : yourPokemon.flavor_text_entries;
@@ -89,14 +90,23 @@ function Results() {
         <img className="center framed" src={yourPokemon.image} alt={yourPokemon.name} />
 
         <br />
-          {array2.map(function(object){
+          {/* {array2.map(function(object){
               if (object.language.name === 'en') {
                 
                 return (
                       <span key={Math.random.toString()} className="centered">{object.genus}</span>
                 );
+              } else {
+                return (
+                  <></>
+                )
               }
-            })}
+            })} */}
+
+            {
+              <span key={Math.random.toString()} className="centered">{yourPokemon.genus}</span>
+
+            }
   
         <br />
         <br />
