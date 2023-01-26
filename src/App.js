@@ -12,6 +12,7 @@ function App() {
       <Route path="/WhatPokemonAreYou/questions" element={<Questions/>} />
       <Route path="/WhatPokemonAreYou/results" element={<Results/>} />
     </Routes>
+
   );
 }
 

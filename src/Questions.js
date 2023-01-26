@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import './styles/css-pokemon-gameboy.css';
 
 const questions = [
@@ -13,6 +14,8 @@ const questions = [
 const values = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
 
 function Questions() {
+
+  const navigate = useNavigate();
 
   // Create our refs for getting data from text areas AND setting error span
   let refs = useRef([]);
@@ -39,7 +42,9 @@ function Questions() {
     
     var pokedex = require('./pokemon');
     var yourPokemon = pokedex.findPokemon(stats)
-    window.location.href = './WhatPokemonAreYou/results?mon=' + yourPokemon;
+    
+    navigate("/WhatPokemonAreYou/results?mon=" + yourPokemon);
+
   }
 
   return (

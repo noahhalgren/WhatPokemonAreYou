@@ -1,6 +1,7 @@
 import React from "react";
 import './style.css';
 import './styles/css-pokemon-gameboy.css';
+import { Link } from "react-router-dom";
 
 function Start() {
   return (
@@ -8,7 +9,7 @@ function Start() {
         <div className="framed">
           <h1>What Pokemon Are You?</h1>
           <div className="framed buttons">
-            <a className="button" href="/WhatPokemonAreYou/questions">Let's find out</a>
+            <Link className="button" to="/WhatPokemonAreYou/questions">Let's find out</Link>
           </div>
         </div>
           <span className="centered">Created by Noah Halgren - Visuals credited to <a href="https://github.com/luttje/css-pokemon-gameboy">luttje</a></span>

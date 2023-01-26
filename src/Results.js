@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate, useSearchParams  } from "react-router-dom";
 import axios from 'axios';
 import './styles/css-pokemon-gameboy.css';
 
@@ -7,11 +8,14 @@ function Results() {
   const [loading, setLoading] = useState(false);
   const [yourPokemon, initPokemon] = useState([]);
 
-  const queryParams = new URLSearchParams(window.location.search)
-  const pokemon_id = queryParams.get("mon")
+  const [searchParams] = useSearchParams()
+
+  const navigate = useNavigate();
+
+  const pokemon_id = searchParams.get("mon")
   
   if (pokemon_id === null) {
-    window.location.href = './'
+    navigate("/WhatPokemonAreYou" + yourPokemon);
   }
 
   // const {all_pokemon} = require('./pokedex');
