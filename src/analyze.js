@@ -139,7 +139,7 @@ function getBaseStat(answer, question) {
     var sentiment = new Sentiment();
     var result = sentiment.analyze(answer, extras[question]);
 
-    const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+    const random = (min, max) => (Math.random() * (max - min)) + min;
 
     return ((result.comparative + 1)/2) * 250 * random(0.95, 1.05);
 }
