@@ -7,6 +7,8 @@ function Results() {
 
   const [loading, setLoading] = useState(false);
   const [yourPokemon, initPokemon] = useState([]);
+  const [viewableEntry, loadEntrie] = useState("");
+  const [allEntries, loadAllEntries] = useState([]);
 
   const [searchParams] = useSearchParams()
 
@@ -20,6 +22,7 @@ function Results() {
 
   // const {all_pokemon} = require('./pokedex');
   // var yourPokemon = all_pokemon[pokemon_id-1];
+  let flavor_array = [];
 
   useEffect(() => {
     const loadPokemon = async () => {
@@ -29,6 +32,14 @@ function Results() {
       response.data.image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + format(response.data.id) + ".png"
       response.data.name = capitalizeFirstLetter(response.data.name)
       initPokemon(response.data)
+
+      flavor_array = response.data.flavor_text_entries.filter(item => item.language.name === 'en');
+      const unique = flavor_array.filter(
+        (obj, index) =>
+        flavor_array.findIndex((item) => item.flavor_text === obj.flavor_text) === index
+      );
+      loadEntrie(unique[0].flavor_text)
+      loadAllEntries(unique);
 
       setLoading(false);
     }
@@ -51,8 +62,26 @@ function Results() {
     return <h1></h1>
   }
 
-  let array = yourPokemon.flavor_text_entries === undefined ? [] : yourPokemon.flavor_text_entries;
+  //let array = yourPokemon.flavor_text_entries === undefined ? [] : yourPokemon.flavor_text_entries;
   let array2 = yourPokemon.genera === undefined ? [] : yourPokemon.genera;
+
+  //let flavor_array = array.filter(item => item.language.name === 'en');
+
+  function handleShowOtherEntry() {
+
+    // find current index
+    var current_obj = allEntries.find(element => element.flavor_text === viewableEntry);
+    var current = allEntries.indexOf(current_obj);
+
+    // increase by one, but not out of bounds
+    current++;
+    if (current >= allEntries.length) {
+      current = 0;
+    }
+    
+    loadEntrie(allEntries[current].flavor_text)
+  }
+  
 
   return (
       <div className="wrapper framed neutral">
@@ -76,9 +105,7 @@ function Results() {
           
           <tbody>
 
-          {array.map(function(object, i){
-              if (object.language.name === 'en') {
-                
+          {/* {flavor_array.map(function(object, i){
                 return (
                   <tr>
                     <td className="framed">
@@ -86,11 +113,19 @@ function Results() {
                     </td>
                   </tr>
                 );
-              }
-            })}
+            })} */}
+            <tr>
+              <td className="framed">
+                {viewableEntry}
+              </td>
+            </tr>
   
           </tbody>
         </table>
+
+        <br />
+        <button type="button" className="button" onClick={handleShowOtherEntry}>Show Other Entry</button>
+
       </div>
   );
 }
