@@ -42,8 +42,8 @@ function Questions() {
     
     var pokedex = require('./pokemon');
     var yourPokemon = pokedex.findPokemon(stats)
-    
-    navigate("/WhatPokemonAreYou/results?mon=" + yourPokemon);
+
+    navigate("/results?mon=" + yourPokemon);
 
   }
 

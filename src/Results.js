@@ -15,7 +15,7 @@ function Results() {
   const pokemon_id = searchParams.get("mon")
   
   if (pokemon_id === null) {
-    navigate("/WhatPokemonAreYou" + yourPokemon);
+    navigate("/");
   }
 
   // const {all_pokemon} = require('./pokedex');
