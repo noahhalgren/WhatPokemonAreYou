@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/WhatPokemonAreYou/static/css/main.c9da2140.css",
-    "main.js": "/WhatPokemonAreYou/static/js/main.22258c41.js",
+    "main.css": "/WhatPokemonAreYou/static/css/main.6873d67f.css",
+    "main.js": "/WhatPokemonAreYou/static/js/main.ad636aa5.js",
     "static/media/PressStart2P-Regular.ttf": "/WhatPokemonAreYou/static/media/PressStart2P-Regular.4bfcf8b92a857ee248e8.ttf",
     "static/media/PressStart2P-Regular.woff": "/WhatPokemonAreYou/static/media/PressStart2P-Regular.769b9aed661f5133fa9d.woff",
     "static/media/Pokemon GB.ttf": "/WhatPokemonAreYou/static/media/Pokemon GB.6211ee48ea626f34681e.ttf",
     "static/media/Pokemon GB.woff": "/WhatPokemonAreYou/static/media/Pokemon GB.896a46558eaec214851c.woff",
     "index.html": "/WhatPokemonAreYou/index.html",
-    "main.c9da2140.css.map": "/WhatPokemonAreYou/static/css/main.c9da2140.css.map",
-    "main.22258c41.js.map": "/WhatPokemonAreYou/static/js/main.22258c41.js.map"
+    "main.6873d67f.css.map": "/WhatPokemonAreYou/static/css/main.6873d67f.css.map",
+    "main.ad636aa5.js.map": "/WhatPokemonAreYou/static/js/main.ad636aa5.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9da2140.css",
-    "static/js/main.22258c41.js"
+    "static/css/main.6873d67f.css",
+    "static/js/main.ad636aa5.js"
   ]
 }
