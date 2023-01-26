@@ -39,7 +39,7 @@ function Questions() {
     
     var pokedex = require('./pokemon');
     var yourPokemon = pokedex.findPokemon(stats)
-    window.location.href = './results?mon=' + yourPokemon;
+    window.location.href = './WhatPokemonAreYou/results?mon=' + yourPokemon;
   }
 
   return (
