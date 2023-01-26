@@ -37,11 +37,14 @@ function Questions() {
         spanRef.current.innerHTML = "All fields are required before continuing.";
         return
       }
-      stats[i] = analyze.getBaseStat(response);
+      stats[i] = analyze.getBaseStat(response, i);
     }
     
     var pokedex = require('./pokemon');
     var yourPokemon = pokedex.findPokemon(stats)
+
+    console.log("Hey! Look at you, you know for to inspect element or whatever. Well if your're curious, these are your 'stats'. Your pokemon is chosen based off how close these stats are to theirs. :) ")
+    console.log(stats)
 
     navigate("/results?mon=" + yourPokemon);
 
