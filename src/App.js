@@ -8,9 +8,9 @@ import './styles/css-pokemon-gameboy.css';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Start/>} />
-      <Route path="/questions" element={<Questions/>} />
-      <Route path="/results" element={<Results/>} />
+      <Route path="/WhatPokemonAreYou" element={<Start/>} />
+      <Route path="/WhatPokemonAreYou/questions" element={<Questions/>} />
+      <Route path="/WhatPokemonAreYou/results" element={<Results/>} />
     </Routes>
   );
 }
