@@ -93,7 +93,7 @@ function Results() {
               if (object.language.name === 'en') {
                 
                 return (
-                      <span className="centered">{object.genus}</span>
+                      <span key={Math.random.toString()} className="centered">{object.genus}</span>
                 );
               }
             })}

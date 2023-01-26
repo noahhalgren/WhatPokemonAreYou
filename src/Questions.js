@@ -55,7 +55,7 @@ function Questions() {
       
       {questions.map(function(object, i){
         return (
-          <div className="framed">
+          <div className="framed" key={i}>
             <h2>Question {i+1}</h2>
             <p>{questions[i]}</p>
             <textarea rows="5" cols="60" name={values[i]} placeholder="Enter text" ref={refs.current[i]}></textarea>
