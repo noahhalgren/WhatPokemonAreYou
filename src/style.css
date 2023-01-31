@@ -36,6 +36,10 @@ textarea {
   color: red
 }
 
+.pad {
+  padding: 10px;
+}
+
 @supports (-webkit-text-stroke: 3px blue) {
     h1 {
       -webkit-text-stroke: 4px blue;

@@ -7,7 +7,7 @@ function Start() {
   return (
       <div className="wrapper">
         <div className="framed">
-          <h1>What Pokemon Are You?</h1>
+          <h1>What Pokémon are You?</h1>
           <div className="framed buttons">
             <Link className="button" to="/questions">Let's find out</Link>
           </div>

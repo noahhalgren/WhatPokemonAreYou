@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams  } from "react-router-dom";
 import axios from 'axios';
 import './styles/css-pokemon-gameboy.css';
+import './style.css';
+
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+  RedditShareButton,
+  TumblrShareButton,
+} from "react-share";
 
 function Results() {
 
@@ -32,7 +40,8 @@ function Results() {
       response.data.name = capitalizeFirstLetter(response.data.name)
       initPokemon(response.data)
 
-      response.data.genus = response.data.genera.find(element => element.language.name === 'en').genus
+      response.data.genus = "The " + response.data.genera.find(element => element.language.name === 'en').genus
+      response.data.shareText = "I am " + response.data.name + ", " + response.data.genus + "!"
 
       let flavor_array = response.data.flavor_text_entries.filter(item => item.language.name === 'en');
       const unique = flavor_array.filter(
@@ -63,10 +72,7 @@ function Results() {
     return <h1>Loading... Please wait...</h1>
   }
 
-  //let array = yourPokemon.flavor_text_entries === undefined ? [] : yourPokemon.flavor_text_entries;
-  let array2 = yourPokemon.genera === undefined ? [] : yourPokemon.genera;
-
-  //let flavor_array = array.filter(item => item.language.name === 'en');
+  const currentURL = window.location.href.split("#")[0];;
 
   function handleShowOtherEntry() {
 
@@ -85,58 +91,71 @@ function Results() {
   
 
   return (
-      <div className="wrapper framed neutral">
-        <h1>{yourPokemon.name}</h1>
-        <img className="center framed" src={yourPokemon.image} alt={yourPokemon.name} />
+          <>
+          <div className="wrapper framed neutral">
+            <h1>{yourPokemon.name}</h1>
+            <img className="center framed" src={yourPokemon.image} alt={yourPokemon.name} />
 
-        <br />
-          {/* {array2.map(function(object){
-              if (object.language.name === 'en') {
-                
-                return (
-                      <span key={Math.random.toString()} className="centered">{object.genus}</span>
-                );
-              } else {
-                return (
-                  <></>
-                )
-              }
-            })} */}
+            <br />
+              {/* {array2.map(function(object){
+                  if (object.language.name === 'en') {
+                    
+                    return (
+                          <span key={Math.random.toString()} className="centered">{object.genus}</span>
+                    );
+                  } else {
+                    return (
+                      <></>
+                    )
+                  }
+                })} */}
 
-            {
-              <span key={Math.random.toString()} className="centered">{yourPokemon.genus}</span>
+                {
+                  <span key={Math.random.toString()} className="centered">{yourPokemon.genus}</span>
 
-            }
-  
-        <br />
-        <br />
+                }
 
-        <table>
+            <br />
+            <br />
+
+            <table>
+              
+              <tbody>
+
+              {/* {flavor_array.map(function(object, i){
+                    return (
+                      <tr>
+                        <td className="framed">
+                          {object.flavor_text}
+                        </td>
+                      </tr>
+                    );
+                })} */}
+                <tr>
+                  <td className="framed">
+                    {viewableEntry}
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+            <br />
+            <button type="button" className="button" onClick={handleShowOtherEntry}>Show Other Entry</button>
+
+          </div>
+          <br/><br/><br/>
+          <div className="wrapper framed neutral">
+            <h3>Share your results!</h3>
+            <ul class="framed buttons compact no-hd">
+              <li><TwitterShareButton resetButtonStyle={false} url={currentURL} title={yourPokemon.shareText} hashtags={["whatpokemonareyou"]} > Twitter </TwitterShareButton></li>
+              <li><FacebookShareButton resetButtonStyle={false} url={currentURL} quote={yourPokemon.shareText} hashtag="#whatpokemonareyou" > Facebook </FacebookShareButton></li>
+              <li><RedditShareButton resetButtonStyle={false} url={currentURL} title={yourPokemon.shareText} > Reddit </RedditShareButton> </li>
+              <li><TumblrShareButton resetButtonStyle={false} url={currentURL} caption={yourPokemon.shareText}> Tumblr </TumblrShareButton></li>
+            </ul>
+          </div>
           
-          <tbody>
-
-          {/* {flavor_array.map(function(object, i){
-                return (
-                  <tr>
-                    <td className="framed">
-                      {object.flavor_text}
-                    </td>
-                  </tr>
-                );
-            })} */}
-            <tr>
-              <td className="framed">
-                {viewableEntry}
-              </td>
-            </tr>
-  
-          </tbody>
-        </table>
-
-        <br />
-        <button type="button" className="button" onClick={handleShowOtherEntry}>Show Other Entry</button>
-
-      </div>
+      </>
   );
 }
 
