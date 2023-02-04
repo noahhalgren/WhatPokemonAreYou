@@ -141,7 +141,7 @@ function getBaseStat(answer, question) {
 
     const random = (min, max) => (Math.random() * (max - min)) + min;
 
-    return ((result.comparative + 1)/2) * 250 * random(0.95, 1.05);
+    return ((result.comparative + 1)/2) * 160 * random(0.95, 1.05);
 }
 
 module.exports = { getBaseStat };
